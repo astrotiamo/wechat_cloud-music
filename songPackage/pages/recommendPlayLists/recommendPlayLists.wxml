@@ -1,0 +1,38 @@
+<!--songPackage/pages/recommendPlayLists/recommendPlayLists.wxml-->
+<view class="playListsContainer">
+  <!-- 头部 -->
+  <view class="header">
+    <view class="img">
+      <image src="{{listImg}}"></image>
+    </view>
+    <view class="info">
+      <text class="name">{{listName}}</text>
+      <text class="discribe">{{discribe}}</text>
+    </view>
+  </view>
+  <!-- 列表区域 -->
+  <view class="listContainer">
+    <view class="listHeader">
+			<text>播放全部</text>
+			<text class="changeMore">多选</text>
+		</view>
+    <!-- 歌曲 -->
+    <scroll-view scroll-y class="listScroll">
+      <view
+        class="scrollItem"
+        wx:for="{{playList}}"
+        wx:key="id"
+        data-index="{{index}}"
+        data-song="{{item}}"
+        bindtap="toSongDetail"
+      >
+        <image src="{{item.al.picUrl}}"></image>
+        <view class="musicInfo">
+          <text class="songName">{{item.name}}</text>
+          <text class="artist">{{item.ar[0].name}}</text>
+        </view>
+        <text class="iconfont icon-icon"></text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

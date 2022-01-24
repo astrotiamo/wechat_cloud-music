@@ -1,7 +1,7 @@
 // pages/songDetail/songDetail.js
 import pubSub from 'pubsub-js'
 import moment from 'moment'
-import request from '../../utils/request'
+import request from '../../../utils/request'
 // 获取全局实例
 const appInstance = getApp()
 Page({
@@ -63,6 +63,8 @@ Page({
         console.log(musicId);
         // 获取音乐详情信息
         this.getMusicInfo(musicId)
+        // 获取歌词
+        this.getLyric(musicId)
         // 自动播放当前音乐
         this.musicControl(true, musicId)
         // 取消订阅(会重复订阅)
@@ -95,6 +97,7 @@ Page({
   // 获取音乐详情
   async getMusicInfo(musicId) {
     let songData = await request('/song/detail', { ids: musicId })
+    console.log(songData);
     let durationTime = moment(songData.songs[0].dt).format('mm:ss')
     this.setData({
       song: songData.songs[0],
@@ -136,7 +139,6 @@ Page({
       })
     }
     res.sort((a, b) => {a.time -b.time})
-    console.log(res);
     this.setData({
       lyric: res
     })
@@ -197,6 +199,8 @@ Page({
       console.log(musicId);
       // 获取音乐详情信息
       this.getMusicInfo(musicId)
+      // 获取歌词
+      this.getLyric(musicId)
       // 自动播放当前音乐
       this.musicControl(true, musicId)
       // 取消订阅(会重复订阅)

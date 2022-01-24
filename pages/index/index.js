@@ -56,7 +56,14 @@ Page({
   // 点击跳转至每日推荐
   toRecommend() {
     wx.navigateTo({
-      url: '/pages/recommendSong/recommendSong',
+      url: '/songPackage/pages/recommendSong/recommendSong',
+    })
+  },
+
+  // 点击跳转推荐歌单
+  toRecommendPlayLists(event) {
+    wx.navigateTo({
+      url: '/songPackage/pages/recommendPlayLists/recommendPlayLists?id=' + event.currentTarget.id,
     })
   },
 

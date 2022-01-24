@@ -100,6 +100,23 @@ Page({
     })
   },
 
+  // 点击热搜榜歌曲名搜索音乐
+  searchHotSong(event) {
+    console.log(event.currentTarget);
+    this.setData({
+      searchContent: event.currentTarget.dataset.hotwords
+    })
+    this.getSearchListData()
+  },
+
+  // 点击历史记录进行搜索
+  searchHistory(event) {
+    this.setData({
+      searchContent: event.currentTarget.dataset.historywords
+    })
+    this.getSearchListData()
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

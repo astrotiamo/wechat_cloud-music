@@ -1,6 +1,6 @@
 // pages/recommendSong/recommendSong.js
 import pubSub from 'pubsub-js'
-import request from '../../utils/request'
+import request from '../../../utils/request'
 Page({
 
   /**
@@ -74,7 +74,7 @@ Page({
     // 路由跳转传参：query参数
     wx.navigateTo({
       // url: '/pages/songDetail/songDetail?song=' + JSON.stringify(song)
-      url: '/pages/songDetail/songDetail?musicId=' + song.id 
+      url: '/songPackage/pages/songDetail/songDetail?musicId=' + song.id 
     })
   },
 

@@ -2,11 +2,19 @@
   "pages": [
     "pages/index/index",
     "pages/search/search",
-    "pages/recommendSong/recommendSong",
-    "pages/songDetail/songDetail",
     "pages/video/video",
     "pages/login/login",
     "pages/personal/personal"
+  ],
+  "subpackages": [
+    {
+      "root": "songPackage",
+      "pages": [
+        "pages/recommendSong/recommendSong",
+        "pages/songDetail/songDetail",
+        "pages/recommendPlayLists/recommendPlayLists"
+      ]
+    }
   ],
   "window": {
     "navigationBarBackgroundColor": "#A5C585",
