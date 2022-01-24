@@ -1,4 +1,5 @@
 // pages/login/login.js
+import request from '../../utils/request'
 Page({
 
   /**
@@ -27,11 +28,50 @@ Page({
     })
   },
 
-  login() {
+  async login() {
     // 收集表单项数据
     let { phone, password } = this.data
     if(!phone) {
-      
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'error'
+      })
+      return
+    }
+    // 定义手机号正则
+    let phoneReg = /^1(3|4|5|6|7|8|9)\d{9}$/
+    if(!phoneReg.test(phone)) {
+      wx.showToast({
+        title: '手机号格式错误',
+        icon: 'error'
+      })
+      return
+    }
+    if(!password) {
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'error'
+      })
+      return
+    }
+    // 后端验证
+    let res = await request('/login/cellphone', { phone, password, isLogin: true })
+    if(res.code === 200) {
+      // wx.showToast({
+      //   title: '登录成功'
+      // })
+
+      // 将用户信息存储至本地
+      wx.setStorageSync('userInfo', JSON.stringify(res.profile))
+      // 跳转至个人中心
+      wx.reLaunch({
+        url: '/pages/personal/personal'
+      })
+    } else {
+      wx.showToast({
+        title: '手机号或密码错误',
+        icon: 'error'
+      })
     }
   },
 

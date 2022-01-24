@@ -1,8 +1,8 @@
 <!--pages/personal/personal.wxml-->
 <view class="personalContainer">
   <view class="user-section">
-    <image class="bg" src="/static/images/personal/bgImg2.jpg"></image>
-    <view class="user-info-box">
+    <image class="bg" src='{{userInfo.backgroundUrl ? userInfo.backgroundUrl : "/static/images/personal/bgImg2.jpg"}}'></image>
+    <view class="user-info-box" bindtap="toLogin">
       <view class="portrait-box">
         <image class="portrait" src='{{userInfo.avatarUrl ? userInfo.avatarUrl : "/static/images/personal/missing-face.png"}}'></image>
       </view>
@@ -22,7 +22,7 @@
         会员
       </view>
       <text class="e-m">master union</text>
-      <text class="e-b">开通会员听歌, 撸代码</text>
+      <text class="e-b">开通会员听歌</text>
     </view>
   </view>
 
@@ -59,12 +59,16 @@
       <view class="recentPlayContainer">
         <text class="title">最近播放</text>
         <!-- 最近播放记录 -->
-        <scroll-view wx:if="{{recentPlayList.length}}" scroll-x="true" class="recentScroll" enable-flex="true">
+        <scroll-view wx:if="{{recentPlayList.length}}" scroll-x class="recentScroll" enable-flex>
           <view class="recentItem" wx:for="{{recentPlayList}}" wx:key="id">
-            <image src="{{item.song.al.picUrl}}"></image>
+            <image src="{{item.song.al.picUrl}}" />
+            <view class="songInfo">
+              <text class="songName">{{item.song.name}}</text>
+              <text class="artistName">{{item.song.ar[0].name}}</text>
+            </view>
           </view>
         </scroll-view>
-        <view wx:else>暂无播放记录</view>
+        <view wx:else class="noRecord">暂无播放记录</view>
       </view>
 
       <view class="cardList">

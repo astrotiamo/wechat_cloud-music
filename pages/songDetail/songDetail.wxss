@@ -1,0 +1,150 @@
+/* pages/songDetail/songDetail.wxss */
+.songDetailContainer {
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.songDetailContainer .bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  filter: blur(20px); /* 模糊度 */
+}
+.songDetailContainer .bg-mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.songDetailContainer .circle {
+  position: relative;
+  z-index: 10;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #fff;
+  margin: 10rpx 0;
+}
+.songDetailContainer .needle {
+  position: relative;
+  z-index: 5;
+  top: -40rpx;
+  left: 60rpx;
+  width: 192rpx;
+  height: 274rpx;
+  transform-origin: 40rpx 0;
+  transition: transform 1s;
+  transform: rotate(-20deg);
+}
+.songDetailContainer .needleRotate {
+  transform: rotate(0deg);
+}
+.songDetailContainer .discContainer {
+  position: relative;
+  top: -170rpx;
+  width: 598rpx;
+  height: 598rpx;
+}
+.songDetailContainer .discAnimation {
+  animation: disc 5s linear infinite; /*动画名称，动画时长，动画效果*/
+  animation-delay: 1s;
+}
+@keyframes disc {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.songDetailContainer .discContainer .disc {
+  width: 598rpx;
+  height: 598rpx;
+}
+.songDetailContainer .discContainer .musicImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 370rpx;
+  height: 370rpx;
+  border-radius: 50%;
+}
+
+.lyricDisplay {
+  position: absolute;
+  bottom: 280rpx;
+  width: 640rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.progressControl {
+  position: absolute;
+  bottom: 200rpx;
+  width: 640rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  align-items: center;
+}
+.progressControl .barControl {
+  position: relative;
+  margin: 0 14rpx;
+  width: 450rpx;
+  height: 4rpx;
+  background: rgba(0, 0, 0, 0.4);
+}
+.progressControl .barControl .audioCurrentTimeBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 4rpx;
+  background: red;
+}
+.progressControl .barControl .audioCircle {
+  position: absolute;
+  right: -12rpx;
+  top: -4rpx; /* 6-2 */
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.musicControls {
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  width: 100%;
+  display: flex;
+  border-top: 1rpx solid #fff;
+}
+.musicControls text {
+  width: 20%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  color: white;
+  font-size: 50rpx;
+}
+.musicControls text.big {
+  font-size: 80rpx;
+}
